@@ -36,6 +36,7 @@ public class SecurityConfig {
                 .requestMatchers("/api/license/validate").permitAll()
                 .requestMatchers("/api/license/validate-offline").permitAll()
                 .requestMatchers("/api/license/validate-file").permitAll()
+                .requestMatchers("/api/v1/license/**").permitAll()
                 .requestMatchers("/api/health").permitAll()
                 .anyRequest().authenticated()
             )
