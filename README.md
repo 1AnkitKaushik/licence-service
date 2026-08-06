@@ -22,7 +22,7 @@ This project covers all the core requirements for managing service licenses:
    - It scans the stored file, checks if any license has expired, updates the status flags, and saves the changes.
 
 4. **Provides an Endpoint for Kubernetes**
-   - Exposes an API endpoint (`GET /api/v1/license/registry`) so Kubernetes cluster controllers (like Lakshya's controller) can read the status and take action (`NONE`, `WARN`, `SHUTDOWN`).
+   - Exposes an API endpoint (`GET /api/v1/license/registry`) so Kubernetes cluster controllers can read the status and take action (`NONE`, `WARN`, `SHUTDOWN`).
    - Returns data as a JSON list:
 ```json
 [
