@@ -1,80 +1,96 @@
 package com.licenseservice.repository;
 
-import com.licenseservice.model.*;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.licenseservice.model.ServiceRegistryEntry;
+import jakarta.annotation.PostConstruct;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Repository
 public class FileRegistryRepository {
 
-    private final String filePath;
+    private static final Logger log = LoggerFactory.getLogger(FileRegistryRepository.class);
+
+    @Value("${registry.storage.file-path:data/registry/service_registry.json}")
+    private String filePath;
+
     private final ObjectMapper objectMapper;
     private final Map<String, ServiceRegistryEntry> registryStore = new ConcurrentHashMap<>();
 
-    public FileRegistryRepository(@Value("${registry.storage.file-path:data/registry/service_registry.json}") String filePath) {
-        this.filePath = filePath;
-        this.objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
-        initStorage();
+    public FileRegistryRepository() {
+        this.objectMapper = new ObjectMapper();
+        this.objectMapper.registerModule(new JavaTimeModule());
     }
 
-    private void initStorage() {
-        File file = new File(filePath);
-        if (!file.exists()) {
-            file.getParentFile().mkdirs();
-            seedDefaultData();
-            saveToFile();
-        } else {
-            loadFromFile();
+    @PostConstruct
+    public void init() {
+        loadFromFile();
+    }
+
+    public synchronized void save(ServiceRegistryEntry entry) {
+        registryStore.put(entry.getServiceId(), entry);
+        saveToFile();
+    }
+
+    public synchronized void saveAll(Collection<ServiceRegistryEntry> entries) {
+        registryStore.clear();
+        for (ServiceRegistryEntry entry : entries) {
+            registryStore.put(entry.getServiceId(), entry);
         }
-    }
-
-    private void seedDefaultData() {
-        List<ServiceRegistryEntry> defaults = List.of(
-            new ServiceRegistryEntry("svc-001", "as1", "STD", ServiceState.RUNNING, LicenseState.ACTIVE, ActionRequired.NONE, LocalDate.now().plusDays(30)),
-            new ServiceRegistryEntry("svc-002", "as2", "PRO", ServiceState.RUNNING, LicenseState.GRACE_PERIOD, ActionRequired.WARN, LocalDate.now().minusDays(5)),
-            new ServiceRegistryEntry("svc-003", "IS1", "INFRA", ServiceState.SHUTDOWN, LicenseState.EXPIRED, ActionRequired.SHUTDOWN, LocalDate.now().minusDays(20))
-        );
-        defaults.forEach(e -> registryStore.put(e.getServiceId(), e));
-    }
-
-    public synchronized void saveToFile() {
-        try {
-            objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File(filePath), registryStore.values());
-        } catch (IOException e) {
-            System.err.println("❌ Failed to save registry to file: " + e.getMessage());
-        }
-    }
-
-    public synchronized void loadFromFile() {
-        try {
-            File file = new File(filePath);
-            List<ServiceRegistryEntry> entries = objectMapper.readValue(file, new TypeReference<>() {});
-            registryStore.clear();
-            entries.forEach(e -> registryStore.put(e.getServiceId(), e));
-        } catch (IOException e) {
-            System.err.println("❌ Failed to load registry from file: " + e.getMessage());
-        }
-    }
-
-    public List<ServiceRegistryEntry> findAll() {
-        return new ArrayList<>(registryStore.values());
+        saveToFile();
     }
 
     public Optional<ServiceRegistryEntry> findById(String serviceId) {
         return Optional.ofNullable(registryStore.get(serviceId));
     }
 
-    public void save(ServiceRegistryEntry entry) {
-        registryStore.put(entry.getServiceId(), entry);
-        saveToFile();
+    public List<ServiceRegistryEntry> findAll() {
+        return new ArrayList<>(registryStore.values());
+    }
+
+    private void loadFromFile() {
+        File file = new File(filePath);
+        if (!file.exists()) {
+            log.info("Registry file does not exist at {}. Creating directory structure...", filePath);
+            File parentDir = file.getParentFile();
+            if (parentDir != null && !parentDir.exists()) {
+                parentDir.mkdirs();
+            }
+            saveToFile();
+            return;
+        }
+
+        try {
+            List<ServiceRegistryEntry> entries = objectMapper.readValue(
+                    file,
+                    new TypeReference<List<ServiceRegistryEntry>>() {}
+            );
+            registryStore.clear();
+            for (ServiceRegistryEntry entry : entries) {
+                registryStore.put(entry.getServiceId(), entry);
+            }
+            log.info("Loaded {} service records from {}", registryStore.size(), filePath);
+        } catch (IOException e) {
+            log.error("Failed to load registry records from {}: {}", filePath, e.getMessage());
+        }
+    }
+
+    private void saveToFile() {
+        File file = new File(filePath);
+        try {
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, new ArrayList<>(registryStore.values()));
+            log.debug("Saved {} records to {}", registryStore.size(), filePath);
+        } catch (IOException e) {
+            log.error("Failed to write service registry to {}: {}", filePath, e.getMessage());
+        }
     }
 }

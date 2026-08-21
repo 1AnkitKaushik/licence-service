@@ -1,31 +1,12 @@
 [ {
-  "serviceId" : "svc-001",
-  "serviceName" : "as1",
-  "policy" : "STD",
-  "state" : "RUNNING",
-  "licenseState" : "ACTIVE",
-  "action" : "NONE",
-  "licenseExpiryDate" : [ 2026, 9, 5 ],
-  "gracePeriodEndDate" : [ 2026, 9, 20 ],
-  "lastCheckedAt" : [ 2026, 8, 6, 18, 0, 0, 134058000 ]
-}, {
-  "serviceId" : "svc-002",
-  "serviceName" : "as2",
-  "policy" : "PRO",
-  "state" : "DEGRADED",
-  "licenseState" : "GRACE_PERIOD",
-  "action" : "WARN",
-  "licenseExpiryDate" : [ 2026, 8, 1 ],
-  "gracePeriodEndDate" : [ 2026, 8, 16 ],
-  "lastCheckedAt" : [ 2026, 8, 6, 18, 0, 0, 171920400 ]
-}, {
-  "serviceId" : "svc-003",
-  "serviceName" : "IS1",
-  "policy" : "INFRA",
+  "serviceId" : "6a390254c1a4666cd69fb74f",
+  "serviceName" : "user1",
+  "licenseKey" : "50X9-14V8-S859-V0V3",
+  "policy" : "MONTHLY",
   "state" : "SHUTDOWN",
   "licenseState" : "EXPIRED",
   "action" : "SHUTDOWN",
-  "licenseExpiryDate" : [ 2026, 7, 17 ],
-  "gracePeriodEndDate" : [ 2026, 8, 1 ],
-  "lastCheckedAt" : [ 2026, 8, 6, 18, 0, 0, 172922700 ]
+  "licenseExpiryDate" : [ 2026, 7, 22 ],
+  "gracePeriodEndDate" : [ 2026, 7, 29 ],
+  "lastCheckedAt" : [ 2026, 8, 21, 14, 51, 2, 643670400 ]
 } ]

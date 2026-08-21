@@ -4,9 +4,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class ServiceRegistryEntry {
-
     private String serviceId;
     private String serviceName;
+    private String licenseKey;
     private String policy;
     private ServiceState state;
     private LicenseState licenseState;
@@ -17,25 +17,14 @@ public class ServiceRegistryEntry {
 
     public ServiceRegistryEntry() {}
 
-    public ServiceRegistryEntry(String serviceId, String serviceName, String policy, 
-                                ServiceState state, LicenseState licenseState, 
-                                ActionRequired action, LocalDate licenseExpiryDate) {
-        this.serviceId = serviceId;
-        this.serviceName = serviceName;
-        this.policy = policy;
-        this.state = state;
-        this.licenseState = licenseState;
-        this.action = action;
-        this.licenseExpiryDate = licenseExpiryDate;
-        this.gracePeriodEndDate = licenseExpiryDate != null ? licenseExpiryDate.plusDays(15) : null;
-        this.lastCheckedAt = LocalDateTime.now();
-    }
-
     public String getServiceId() { return serviceId; }
     public void setServiceId(String serviceId) { this.serviceId = serviceId; }
 
     public String getServiceName() { return serviceName; }
     public void setServiceName(String serviceName) { this.serviceName = serviceName; }
+
+    public String getLicenseKey() { return licenseKey; }
+    public void setLicenseKey(String licenseKey) { this.licenseKey = licenseKey; }
 
     public String getPolicy() { return policy; }
     public void setPolicy(String policy) { this.policy = policy; }

@@ -13,6 +13,7 @@ D:\VSCode\Java\license-service\backend\src\main\java\com\licensemanager\model\Li
 D:\VSCode\Java\license-service\backend\src\main\java\com\licensemanager\security\JwtUtil.java
 D:\VSCode\Java\license-service\backend\src\main\java\com\licensemanager\controller\LicenseController.java
 D:\VSCode\Java\license-service\backend\src\main\java\com\licenseservice\scheduler\LicenseScheduler.java
+D:\VSCode\Java\license-service\backend\src\main\java\com\licenseservice\dto\K8sServiceActionResponse.java
 D:\VSCode\Java\license-service\backend\src\main\java\com\licenseservice\model\LicenseState.java
 D:\VSCode\Java\license-service\backend\src\main\java\com\licensemanager\dto\LicenseRenewalRequest.java
 D:\VSCode\Java\license-service\backend\src\main\java\com\licensemanager\service\AuthService.java
