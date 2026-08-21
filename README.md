@@ -24,27 +24,7 @@ This project covers all the core requirements for managing service licenses:
 4. **Provides an Endpoint for Kubernetes**
    - Exposes an API endpoint (`GET /api/v1/license/registry`) so Kubernetes cluster controllers can read the status and take action (`NONE`, `WARN`, `SHUTDOWN`).
    - Returns data as a JSON list:
-```json
-[
-  {
-    "serviceId": "svc-001",
-    "serviceName": "as1",
-    "status": "ACTIVE",
-    "action": "NONE"
-  },
-  {
-    "serviceId": "svc-002",
-    "serviceName": "as2",
-    "status": "GRACE_PERIOD",
-    "action": "WARN"
-  },
-  {
-    "serviceId": "svc-003",
-    "serviceName": "IS1",
-    "status": "EXPIRED",
-    "action": "SHUTDOWN"
-  }
-]
+
 ```
 
 5. **Easy Configuration**
