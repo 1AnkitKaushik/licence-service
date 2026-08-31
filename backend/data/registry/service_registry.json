@@ -1,12 +1,34 @@
 [ {
-  "serviceId" : "6a390254c1a4666cd69fb74f",
-  "serviceName" : "user1",
-  "licenseKey" : "50X9-14V8-S859-V0V3",
+  "serviceId" : "svc-auth-01",
+  "serviceName" : "AuthenticationService",
+  "licenseKey" : "LIC-ACTIVE-2026",
+  "policy" : "YEARLY",
+  "state" : "RUNNING",
+  "licenseState" : "ACTIVE",
+  "action" : "NONE",
+  "licenseExpiryDate" : [ 2026, 9, 30 ],
+  "gracePeriodEndDate" : [ 2026, 10, 15 ],
+  "lastCheckedAt" : [ 2026, 8, 31, 13, 2, 4, 219733700 ]
+}, {
+  "serviceId" : "svc-reporting-03",
+  "serviceName" : "ReportingService",
+  "licenseKey" : "LIC-EXPIRED-2026",
   "policy" : "MONTHLY",
   "state" : "SHUTDOWN",
   "licenseState" : "EXPIRED",
   "action" : "SHUTDOWN",
-  "licenseExpiryDate" : [ 2026, 7, 22 ],
-  "gracePeriodEndDate" : [ 2026, 7, 29 ],
-  "lastCheckedAt" : [ 2026, 8, 31, 11, 40, 45, 773259200 ]
+  "licenseExpiryDate" : [ 2026, 8, 1 ],
+  "gracePeriodEndDate" : [ 2026, 8, 16 ],
+  "lastCheckedAt" : [ 2026, 8, 31, 13, 2, 4, 219733700 ]
+}, {
+  "serviceId" : "svc-payment-02",
+  "serviceName" : "PaymentGatewayService",
+  "licenseKey" : "LIC-GRACE-2026",
+  "policy" : "MONTHLY",
+  "state" : "RUNNING",
+  "licenseState" : "GRACE_PERIOD",
+  "action" : "WARN",
+  "licenseExpiryDate" : [ 2026, 8, 26 ],
+  "gracePeriodEndDate" : [ 2026, 9, 10 ],
+  "lastCheckedAt" : [ 2026, 8, 31, 13, 2, 4, 219733700 ]
 } ]

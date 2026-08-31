@@ -18,15 +18,14 @@ import java.util.List;
 @Service
 public class LicenseEvaluationService {
 
-    
-
     private final LicenseRepository licenseRepository;
     private final LicenseRegistryService licenseRegistryService;
 
     @Value("${registry.grace-period-days:15}")
     private int defaultGracePeriodDays;
 
-    public LicenseEvaluationService(LicenseRepository licenseRepository, LicenseRegistryService licenseRegistryService) {
+    public LicenseEvaluationService(LicenseRepository licenseRepository, 
+                                  LicenseRegistryService licenseRegistryService) {
         this.licenseRepository = licenseRepository;
         this.licenseRegistryService = licenseRegistryService;
     }
@@ -34,6 +33,7 @@ public class LicenseEvaluationService {
     public List<ServiceRegistryEntry> evaluateAndSyncToRegistry() {
         LocalDate today = LocalDate.now();
         LocalDateTime nowTime = LocalDateTime.now();
+
         List<License> allLicenses = licenseRepository.findAll();
         List<ServiceRegistryEntry> entries = new ArrayList<>();
 
