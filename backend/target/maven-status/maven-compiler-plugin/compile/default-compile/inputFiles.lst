@@ -28,6 +28,7 @@ D:\VSCode\Java\license-service\backend\src\main\java\com\licensemanager\dto\Regi
 D:\VSCode\Java\license-service\backend\src\main\java\com\licensemanager\config\SecurityConfig.java
 D:\VSCode\Java\license-service\backend\src\main\java\com\licensemanager\dto\AuthResponse.java
 D:\VSCode\Java\license-service\backend\src\main\java\com\licensemanager\config\CorsConfig.java
+D:\VSCode\Java\license-service\backend\src\main\java\com\licensemanager\service\LicenseEvaluationService.java
 D:\VSCode\Java\license-service\backend\src\main\java\com\licensemanager\dto\LicenseValidationRequest.java
 D:\VSCode\Java\license-service\backend\src\main\java\com\licensemanager\repository\LicenseRepository.java
 D:\VSCode\Java\license-service\backend\src\main\java\com\licensemanager\service\LicenseService.java

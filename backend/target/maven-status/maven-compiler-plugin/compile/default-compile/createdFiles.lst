@@ -6,6 +6,7 @@ com\licenseservice\repository\FileRegistryRepository$1.class
 com\licensemanager\repository\LicenseRepository.class
 com\licensemanager\service\LicenseFileService$OfflineLicenseData.class
 com\licensemanager\repository\LicenseValidationLogRepository.class
+com\licensemanager\service\LicenseEvaluationService.class
 com\licensemanager\dto\LicenseValidationResponse.class
 com\licenseservice\model\ActionRequired.class
 com\licenseservice\service\LicenseRegistryService.class

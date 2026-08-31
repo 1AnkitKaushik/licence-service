@@ -137,8 +137,7 @@ public class LicenseService {
                     .build();
         }
         
-        // Check expiry and grace period
-        AccessLevel accessLevel = license.getAccessLevel();
+        
         
         if (license.isFullyExpired()) {
             // Fully expired - no access
