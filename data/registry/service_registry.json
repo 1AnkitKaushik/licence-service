@@ -1,0 +1,32 @@
+﻿[
+  {
+    "serviceId": "svc-auth-01",
+    "serviceName": "AuthenticationService",
+    "licenseKey": "LIC-ACTIVE-2026",
+    "policy": "ENTERPRISE",
+    "state": "RUNNING",
+    "licenseState": "ACTIVE",
+    "action": "NONE",
+    "lastChecked": "2026-08-24T14:30:00Z"
+  },
+  {
+    "serviceId": "svc-payment-02",
+    "serviceName": "PaymentGatewayService",
+    "licenseKey": "LIC-GRACE-2026",
+    "policy": "STANDARD",
+    "state": "DEGRADED",
+    "licenseState": "GRACE_PERIOD",
+    "action": "WARN",
+    "lastChecked": "2026-08-24T14:30:00Z"
+  },
+  {
+    "serviceId": "svc-reporting-03",
+    "serviceName": "ReportingService",
+    "licenseKey": "LIC-EXPIRED-2026",
+    "policy": "BASIC",
+    "state": "SHUTDOWN",
+    "licenseState": "EXPIRED",
+    "action": "SHUTDOWN",
+    "lastChecked": "2026-08-24T14:30:00Z"
+  }
+]

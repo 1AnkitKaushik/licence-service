@@ -89,3 +89,9 @@ android-sdk/ -e
 # Environment files
 *.env
 *.env.*
+
+target/
+backend/target/
+*.class
+.vscode/
+
