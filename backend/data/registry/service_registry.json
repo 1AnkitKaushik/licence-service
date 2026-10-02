@@ -1,4 +1,15 @@
 [ {
+  "serviceId" : "6a9689ea78c9d704b47e7b47",
+  "serviceName" : "InventoryService",
+  "licenseKey" : "D1NK-INCW-RUSG-T046",
+  "policy" : "MONTHLY",
+  "state" : "RUNNING",
+  "licenseState" : "ACTIVE",
+  "action" : "NONE",
+  "licenseExpiryDate" : [ 2026, 11, 1 ],
+  "gracePeriodEndDate" : [ 2026, 12, 1 ],
+  "lastCheckedAt" : [ 2026, 9, 7, 11, 49, 15, 773118500 ]
+}, {
   "serviceId" : "svc-auth-01",
   "serviceName" : "AuthenticationService",
   "licenseKey" : "LIC-ACTIVE-2026",
@@ -8,7 +19,7 @@
   "action" : "NONE",
   "licenseExpiryDate" : [ 2026, 9, 30 ],
   "gracePeriodEndDate" : [ 2026, 10, 15 ],
-  "lastCheckedAt" : [ 2026, 8, 31, 13, 2, 4, 219733700 ]
+  "lastCheckedAt" : [ 2026, 9, 7, 11, 49, 15, 773118500 ]
 }, {
   "serviceId" : "svc-reporting-03",
   "serviceName" : "ReportingService",
@@ -19,7 +30,40 @@
   "action" : "SHUTDOWN",
   "licenseExpiryDate" : [ 2026, 8, 1 ],
   "gracePeriodEndDate" : [ 2026, 8, 16 ],
-  "lastCheckedAt" : [ 2026, 8, 31, 13, 2, 4, 219733700 ]
+  "lastCheckedAt" : [ 2026, 9, 7, 11, 49, 15, 773118500 ]
+}, {
+  "serviceId" : "6a9692c578c9d704b47e7b49",
+  "serviceName" : "InventoryService",
+  "licenseKey" : "9BL0-6XLP-A598-OMD7",
+  "policy" : "MONTHLY",
+  "state" : "RUNNING",
+  "licenseState" : "ACTIVE",
+  "action" : "NONE",
+  "licenseExpiryDate" : [ 2026, 10, 1 ],
+  "gracePeriodEndDate" : [ 2026, 10, 16 ],
+  "lastCheckedAt" : [ 2026, 9, 7, 11, 49, 15, 773118500 ]
+}, {
+  "serviceId" : "6a9e5763c65b886cc8f0388f",
+  "serviceName" : "InventoryService",
+  "licenseKey" : "J0GT-2FLP-TTZN-XBL7",
+  "policy" : "MONTHLY",
+  "state" : "RUNNING",
+  "licenseState" : "ACTIVE",
+  "action" : "NONE",
+  "licenseExpiryDate" : [ 2026, 10, 7 ],
+  "gracePeriodEndDate" : [ 2026, 10, 22 ],
+  "lastCheckedAt" : [ 2026, 9, 7, 11, 49, 15, 773118500 ]
+}, {
+  "serviceId" : "6a9e530fc65b886cc8f0388a",
+  "serviceName" : "InventoryService",
+  "licenseKey" : "ZMVO-9NH3-64ZD-LD3A",
+  "policy" : "MONTHLY",
+  "state" : "RUNNING",
+  "licenseState" : "ACTIVE",
+  "action" : "NONE",
+  "licenseExpiryDate" : [ 2026, 10, 7 ],
+  "gracePeriodEndDate" : [ 2026, 10, 22 ],
+  "lastCheckedAt" : [ 2026, 9, 7, 11, 49, 15, 773118500 ]
 }, {
   "serviceId" : "svc-payment-02",
   "serviceName" : "PaymentGatewayService",
@@ -30,5 +74,16 @@
   "action" : "WARN",
   "licenseExpiryDate" : [ 2026, 8, 26 ],
   "gracePeriodEndDate" : [ 2026, 9, 10 ],
-  "lastCheckedAt" : [ 2026, 8, 31, 13, 2, 4, 219733700 ]
+  "lastCheckedAt" : [ 2026, 9, 7, 11, 49, 15, 773118500 ]
+}, {
+  "serviceId" : "6a9e533bc65b886cc8f0388b",
+  "serviceName" : "InventoryService",
+  "licenseKey" : "GAVK-IXP6-QIQA-M9JO",
+  "policy" : "MONTHLY",
+  "state" : "RUNNING",
+  "licenseState" : "ACTIVE",
+  "action" : "NONE",
+  "licenseExpiryDate" : [ 2026, 11, 7 ],
+  "gracePeriodEndDate" : [ 2026, 12, 7 ],
+  "lastCheckedAt" : [ 2026, 9, 7, 11, 49, 15, 773118500 ]
 } ]

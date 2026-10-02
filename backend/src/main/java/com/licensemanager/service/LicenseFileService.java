@@ -37,7 +37,7 @@ public class LicenseFileService {
             licenseData.put("username", license.getUsername());
             licenseData.put("email", license.getEmail());
             licenseData.put("subscriptionType", license.getSubscriptionType().name());
-            licenseData.put("startDate", license.getStartDate().toString());
+            licenseData.put("startDate", license.getStartDate() != null ? license.getStartDate().toString() : LocalDateTime.now().toString());
             licenseData.put("expiryDate", license.getExpiryDate().toString());
             licenseData.put("gracePeriodDays", license.getGracePeriodDays());
             licenseData.put("graceEndDate", license.getGraceEndDate().toString());
@@ -82,20 +82,31 @@ public class LicenseFileService {
             @SuppressWarnings("unchecked")
             Map<String, Object> licenseData = objectMapper.readValue(jsonData, Map.class);
             
-            // Parse dates
-            LocalDateTime expiryDate = LocalDateTime.parse((String) licenseData.get("expiryDate"));
-            LocalDateTime graceEndDate = LocalDateTime.parse((String) licenseData.get("graceEndDate"));
-            String status = (String) licenseData.get("status");
-            
             // Check status
+            String status = (String) licenseData.get("status");
             if ("REVOKED".equals(status) || "SUSPENDED".equals(status)) {
                 return new OfflineLicenseValidationResult(false, "License is " + status.toLowerCase(), 
                     new OfflineLicenseData(licenseData, License.AccessLevel.NONE));
             }
-            
-            // Check expiry
+
             LocalDateTime now = LocalDateTime.now();
+
+            // Guard check: is the start date in the future?
+            String startDateStr = (String) licenseData.get("startDate");
+            if (startDateStr != null) {
+                LocalDateTime startDate = LocalDateTime.parse(startDateStr);
+                if (now.isBefore(startDate)) {
+                    return new OfflineLicenseValidationResult(false, 
+                        "License file is not yet active. Valid from: " + startDate, 
+                        new OfflineLicenseData(licenseData, License.AccessLevel.NONE));
+                }
+            }
             
+            // Parse expiry boundaries
+            LocalDateTime expiryDate = LocalDateTime.parse((String) licenseData.get("expiryDate"));
+            LocalDateTime graceEndDate = LocalDateTime.parse((String) licenseData.get("graceEndDate"));
+            
+            // Check expiry & grace window
             if (now.isBefore(expiryDate)) {
                 // Active license
                 return new OfflineLicenseValidationResult(true, "License is valid", 
@@ -136,6 +147,7 @@ public class LicenseFileService {
         public String getUsername() { return (String) data.get("username"); }
         public String getEmail() { return (String) data.get("email"); }
         public String getSubscriptionType() { return (String) data.get("subscriptionType"); }
+        public String getStartDate() { return (String) data.get("startDate"); }
         public String getExpiryDate() { return (String) data.get("expiryDate"); }
         public String getGraceEndDate() { return (String) data.get("graceEndDate"); }
         public int getGracePeriodDays() { return (int) data.get("gracePeriodDays"); }
